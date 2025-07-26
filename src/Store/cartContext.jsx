@@ -9,7 +9,7 @@ const CartContext = createContext({
 function cartReducer(state, action){
     if(action.type === "ADD_ITEM"){
         const exsistingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id);
-        const updatedItems = [...state.items];
+        let updatedItems = [...state.items];
 
         if(exsistingCartItemIndex > -1){
             const exsistingItem = state.items[exsistingCartItemIndex];
@@ -27,7 +27,7 @@ function cartReducer(state, action){
     if(action.type === "REMOVE_ITEM"){
          const exsistingCartItemIndex = state.items.findIndex((item) => item.id === action.id);
          const exsistingCartItem = state.items[exsistingCartItemIndex];
-         const updatedItems = [...state.items];
+         let updatedItems = [...state.items];
          
          if(exsistingCartItem.quantity === 1){
             updatedItems.splice(exsistingCartItemIndex,1)
